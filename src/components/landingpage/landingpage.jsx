@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Navbar from "./navbar/Navbar";
+import Navbar from "../navbar/Navbar"
 import { Navigate } from "react-router-dom";  
 
 
@@ -18,7 +18,7 @@ function Landingpage(){
 
         <>
 
-<Navbar/>
+      <Navbar/>
 
 
 <section>

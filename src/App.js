@@ -7,7 +7,7 @@ function App() {
     <>
 
     <Routes>
-      <Route element={< Landingpage/>}/>
+      <Route path="/" element={< Landingpage/>}/>
 
     </Routes>
     

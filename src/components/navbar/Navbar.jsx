@@ -1,5 +1,5 @@
 import React from "react";
-import fast from '../resource/logo-cropped.png'
+import fast from '../resources/logo_cropped.png'
 import { Link } from "react-router-dom";
 
 
@@ -21,18 +21,18 @@ function Navbar(){
         </div>
         <div className="hidden sm:flex sm:items-center">
           
-        <Link
+          <Link
             to="/register"
             className="text-gray-800 text-sm font-semibold hover:text-purple-600 mr-4"
           >
-            Personal
+            Trip
           </Link>
 
           <Link
             to="/developers"
             className="text-gray-800 text-sm font-semibold hover:text-purple-600 mr-4"
           >
-            Developers
+            Roommates
           </Link>
           <Link
             to='/help'
