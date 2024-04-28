@@ -10,6 +10,7 @@ import Activities from './components/sections/Activities';
 import Owed from './components/sections/Owed';
 import Owing from './components/sections/Owing';
 import Settle from './components/sections/Settle';
+import AddActivity from './components/sections/AddActivity';
 
 function App() {
   return (
@@ -26,18 +27,12 @@ function App() {
         <Route path='/main/activities' element={<Activities/>}/>
         <Route path='/main/owing' element={<Owing/>}/>
         <Route path='/main/owed' element={<Owed/>}/>
-        <Route path='/main/settle' element={<Settle/>}>
+        <Route path='/main/settle' element={<Settle/>}/>
+        <Route path='/main/add_activity' element={<AddActivity/>}/>
       </Route>
 
-    {/* < Route path='/client/setting' element={<Setting/>}/> */}
 
-
-
-
-  </Route>
-     
-
-    </Routes>
+      </Routes>
     
     </>
   );

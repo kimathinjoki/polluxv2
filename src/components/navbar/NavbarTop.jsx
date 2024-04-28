@@ -28,7 +28,7 @@ function NavbarTop(){
         }}>
           <img
             src={fast}
-            className="w-4 h-4 text-purple-600"
+            className="w-32 h-12 text-purple-600"
             viewBox="0 0 24 24"
             onClick={()=> setHome(true)}
           >

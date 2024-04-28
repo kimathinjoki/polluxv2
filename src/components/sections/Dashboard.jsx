@@ -18,6 +18,9 @@ function Dashboard() {
 	const [owedTransactions, setowedTransactions] = useState([]);
 	const [owingTransactions, setowingTransactions] = useState([]);
 	const [balance, setBalance] = useState(0);
+    const [oweList, setOweList] = useState(false);
+    const [owingList, setOwingList] = useState(false);
+
 
 	const [show, setShow] = useState(false);
 
@@ -165,28 +168,21 @@ function Dashboard() {
 		return <Navigate to="/main/transact" />;
 	}
 
+    if (oweList) {
+        return <Navigate to="/main/owed" />;
+
+    }
+
+    if (owingList){
+        return <Navigate to="/main/owing" />;
+    
+    }
+
 	return (
 		<>
 			<div className="h-full ml-14 mt-14 mb-10 md:ml-64">
-				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 p-4 gap-4">
-					<div className="bg-violet-500 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-violet-600 dark:border-gray-600 text-white font-medium group">
-						<div className="flex justify-center items-center w-14 h-14 bg-white rounded-full transition-all duration-300 transform group-hover:rotate-12">
-							<i
-								width={30}
-								height={30}
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke="currentColor"
-								className="stroke-current text-violet-800 dark:text-gray-800 transform transition-transform duration-500 ease-in-out text-2xl"
-							>
-								<MdOutlineAccountBalanceWallet />
-							</i>
-						</div>
-						<div className="text-right">
-							<p className="text-2xl">$ {balance}</p>
-							<p>Balance</p>
-						</div>
-					</div>
+				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 p-4 gap-4">
+	
 					<div className="bg-violet-500 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-violet-600 dark:border-gray-600 text-white font-medium group">
 						<div className="flex justify-center items-center w-14 h-14 bg-white rounded-full transition-all duration-300 transform group-hover:rotate-12">
 							<i
@@ -274,9 +270,9 @@ function Dashboard() {
 													<th className="p-3">Activity</th>
 													{/* <th className="p-3">main</th> */}
 													<th className="p-3"></th>
-													<th className="p-3">Completed</th>
+													<th className="p-3">name</th>
 													<th className="p-3 text-right">Amount</th>
-													<th className="p-3">Status</th>
+													<th className="p-3"></th>
 												</tr>
 											</thead>
 											<tbody classNamw="space-y-6">
@@ -368,10 +364,10 @@ function Dashboard() {
 											<thead className="dark:bg-gray-200 space-y-6">
 												<tr className="text-left">
 													<th className="p-3">Activity</th>
-													<th className="p-3">Expense</th>
-													<th className="p-3">Completed</th>
-													<th className="p-3 text-right">Amount</th>
-													<th className="p-3">Status</th>
+													<th className="p-3"></th>
+													<th className="p-3">Name</th>
+													<th className="p-3 text-right"></th>
+													<th className="p-3">Amount</th>
 												</tr>
 											</thead>
 											<tbody classNamw="space-y-6">
