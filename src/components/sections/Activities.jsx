@@ -36,18 +36,19 @@ function Activities() {
 
 		// gets all outgoing and open transaction
 
-		axios.get(`http://127.0.0.1:3001/owing/${userId}`,{
-			headers: {
-			  'Authorization': `Bearer ${token}`
-			}
-		  })
-		  .then((response)=>{
-			console.log(response.data)
-			setActivities(...activities, response.data.activities)
-		  })
-		  .catch((err)=>{
-			console.log(err)
-		  })
+		// axios.get(`http://127.0.0.1:3001/owing/${userId}`,{
+		// 	headers: {
+		// 	  'Authorization': `Bearer ${token}`
+		// 	}
+		//   })
+		//   .then((response)=>{
+		// 	console.log(response)
+		// 	setActivities(...activities, response.data)
+		//   })
+		//   .catch((err)=>{
+		// 	console.log(err)
+		//   })
+		  getActivities(userId);
 
 	},[])
 
@@ -67,9 +68,19 @@ function Activities() {
 		return participants
 	}
 
+	function getActivities(id) {
+		axios.get(`http://127.0.0.1:5000/api/activity`)
+				.then((response)=>{
+					setActivities(response.data.objects);
+				})
+				.catch((err)=>{
+					console.log(err);
+				})
+	}
     if(expenses){
         return <Navigate to="/main/expenses"/>
     }
+
 
 		return(
 				<>
@@ -109,18 +120,17 @@ function Activities() {
 						{activities?.map((transaction)=>{
 							return <tr className="border-b border-opacity-20  dark:border-gray-100 dark:bg-gray-200">
 								<td className="p-3">
-									<p>{transaction.id * 48673}</p>
+									<p>{transaction.description}</p>
 								</td>
 								<td className="p-3">
-									<p>{transaction.created_at}</p>
+									<p>{transaction.description}</p>
+								</td>
+								<td className="p-3">
+									<p>{transaction.created}</p>
 									{/* <p className="dark:text-gray-400">Friday</p> */}
 								</td>
-								<td className="p-3">
-									<p>{transaction.updated_at}</p>
-									{/* <p className="dark:text-gray-400">Tuesday</p> */}
-								</td>
 								<td className="p-3 text-right">
-									<p>$ {transaction.amount}</p>
+									<p>$ {transaction.budget}</p>
 								</td>
 								<td className="p-3 text-right">
 									<button
@@ -139,7 +149,12 @@ function Activities() {
 							</tr>
 							})}
 
+<tr className="border-b border-opacity-20  dark:border-gray-100 dark:bg-gray-200">
+
+
+
                             <tr className="border-b border-opacity-20  dark:border-gray-100 dark:bg-gray-200">
+
 								<td className="p-3">
 									<p>Hawai Trip</p>
 								</td>
