@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
 import { TbSquareArrowUp } from 'react-icons/tb';
+import { Navigate } from "react-router-dom";
 
 function Activities() {
 	const tableHeads = ['Name', 'Type', 'Date', 'Amount', 'Participants', 'Expenses'];
@@ -10,6 +11,7 @@ function Activities() {
 	const [actvId, setActvId ] = useState(0)
 	const [activities, setActivities] = useState([])
 	const [client, setClient] = useState("")
+    const [expenses, setExpenses] = useState(false)
 
 	// const [receiver_id, setReceiver_id] = useState(0)
 	// const [payer_id, setPayer_id] =useState(0)
@@ -75,6 +77,10 @@ function Activities() {
 					console.log(err);
 				})
 	}
+    if(expenses){
+        return <Navigate to="/main/expenses"/>
+    }
+
 
 		return(
 				<>
@@ -146,6 +152,9 @@ function Activities() {
 <tr className="border-b border-opacity-20  dark:border-gray-100 dark:bg-gray-200">
 
 
+
+                            <tr className="border-b border-opacity-20  dark:border-gray-100 dark:bg-gray-200">
+
 								<td className="p-3">
 									<p>Hawai Trip</p>
 								</td>
@@ -182,13 +191,59 @@ function Activities() {
 										className=" cursor-pointer px-3 py-1 font-semibold rounded-md dark:bg-orange-400 dark:text-gray-900"
 										onClick={()=>{
 											setActvId(activities.id)
-											openModal()
+											setExpenses(true)
 										}}
 									>
 										<span>View</span>
 									</button>
 								</td>
 							</tr>
+
+                            <tr className="border-b border-opacity-20  dark:border-gray-100 dark:bg-gray-200">
+								<td className="p-3">
+									<p> Movie Ticket</p>
+								</td>
+								<td className="p-3">
+									<p> Leisure</p>
+									{/* <p className="dark:text-gray-400">Friday</p> */}
+								</td>
+								<td className="p-3">
+									<p>01/02/2024</p>
+									{/* <p className="dark:text-gray-400">Tuesday</p> */}
+								</td>
+								<td className="p-3 text-right">
+									<p>$ 68</p>
+								</td>
+								<td className="p-3 text-right">
+									<button
+										type="button"
+										data-modal-target="#defaultModal"
+										data-modal-toggle="defaultModal"
+										className=" cursor-pointer px-3 py-1 font-semibold rounded-md dark:bg-orange-400 dark:text-gray-900"
+										onClick={()=>{
+											setActvId(activities.id)
+											openModal()
+										}}
+									>
+										<span>View</span>
+									</button>
+								</td>
+                                <td className="p-3 text-right">
+									<button
+										type="button"
+										data-modal-target="#defaultModal"
+										data-modal-toggle="defaultModal"
+										className=" cursor-pointer px-3 py-1 font-semibold rounded-md dark:bg-orange-400 dark:text-gray-900"
+										onClick={()=>{
+											setActvId(activities.id)
+											setExpenses(true)
+										}}
+									>
+										<span>View</span>
+									</button>
+								</td>
+							</tr>
+
 
 							
 						</tbody>

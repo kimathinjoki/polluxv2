@@ -3,7 +3,7 @@ import axios from "axios";
 import { TbSquareArrowUp } from 'react-icons/tb';
 
 function Expenses() {
-	const tableHeads = ['Activity', 'Expense', 'Date', 'Amount', 'Participants'];
+	const tableHeads = ['Activity', 'Expense', 'Paid By', 'Date', 'Amount'];
 
 	const [showModal, setShowModal] = useState(false);
 
@@ -34,7 +34,7 @@ function Expenses() {
 
 		// gets all outgoing and open transaction
 
-		axios.get(`http://127.0.0.1:3001/owing/${userId}`,{
+		axios.get(`http://127.0.0.1:3001/activities/${userId}`,{
 			headers: {
 			  'Authorization': `Bearer ${token}`
 			}
@@ -73,7 +73,7 @@ function Expenses() {
 			<div className="flex items-center justify-center">
 				<span className="inline-flex mt-20 rounded-full bg-orange-300 px-4 py-3.5 text-black">
 					<TbSquareArrowUp className="self-center text-3xl" />
-					<p className="whitespace-nowrap text-3xl">Past Activities</p>
+					<p className="whitespace-nowrap text-3xl">Hawai Trip Expenses</p>
 				</span>
 			</div>
 
@@ -103,35 +103,83 @@ function Expenses() {
 						{activities?.map((transaction)=>{
 							return <tr className="border-b border-opacity-20  dark:border-gray-100 dark:bg-gray-200">
 								<td className="p-3">
-									<p>{transaction.id * 48673}</p>
+									<p>{transaction.expense}</p>
 								</td>
 								<td className="p-3">
 									<p>{transaction.created_at}</p>
 									{/* <p className="dark:text-gray-400">Friday</p> */}
 								</td>
 								<td className="p-3">
-									<p>{transaction.updated_at}</p>
+									<p>{transaction.Amount}</p>
 									{/* <p className="dark:text-gray-400">Tuesday</p> */}
 								</td>
 								<td className="p-3 text-right">
-									<p>$ {transaction.amount}</p>
-								</td>
-								<td className="p-3 text-right">
-									<button
-										type="button"
-										data-modal-target="#defaultModal"
-										data-modal-toggle="defaultModal"
-										className=" cursor-pointer px-3 py-1 font-semibold rounded-md dark:bg-orange-400 dark:text-gray-900"
-										onClick={()=>{
-											setActvId(activities.id)
-											openModal()
-										}}
-									>
-										<span>View</span>
-									</button>
+									<p>$ {transaction.participant}</p>
 								</td>
 							</tr>
 							})}
+
+                            <tr className="border-b border-opacity-20  dark:border-gray-100 dark:bg-gray-200">
+								<td className="p-3">
+									<p>Hawai Trip</p>
+								</td>
+								<td className="p-3">
+									<p>Gas</p>
+									
+								</td>
+                                <td className="p-3">
+									<p>Adam</p>
+									
+								</td>
+								<td className="p-3">
+									<p>01/03/2024</p>
+				
+								</td>
+								<td className="p-3 text-right">
+									<p>$ 46</p>
+								</td>
+							</tr>
+                            <tr className="border-b border-opacity-20  dark:border-gray-100 dark:bg-gray-200">
+								<td className="p-3">
+									<p>Hawai Trip</p>
+								</td>
+								<td className="p-3">
+									<p>Groceries</p>
+									
+								</td>
+                                <td className="p-3">
+									<p>Rui</p>
+									
+								</td>
+								<td className="p-3">
+									<p>01/03/2024</p>
+				
+								</td>
+								<td className="p-3 text-right">
+									<p>$ 104</p>
+								</td>
+							</tr>
+
+                            <tr className="border-b border-opacity-20  dark:border-gray-100 dark:bg-gray-200">
+								<td className="p-3">
+									<p>Hawai Trip</p>
+								</td>
+								<td className="p-3">
+									<p>Airbnb</p>
+									
+								</td>
+                                <td className="p-3">
+									<p>Kim</p>
+									
+								</td>
+								<td className="p-3">
+									<p>01/04/2024</p>
+				
+								</td>
+								<td className="p-3 text-right">
+									<p>$ 528</p>
+								</td>
+							</tr>
 
 							
 						</tbody>

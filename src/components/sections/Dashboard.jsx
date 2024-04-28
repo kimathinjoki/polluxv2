@@ -20,6 +20,7 @@ function Dashboard() {
 	const [balance, setBalance] = useState(0);
     const [oweList, setOweList] = useState(false);
     const [owingList, setOwingList] = useState(false);
+    const [settle, setSettle] = useState(false)
 
 
 	const [show, setShow] = useState(false);
@@ -164,8 +165,8 @@ function Dashboard() {
 	}
 
 
-	if (transact) {
-		return <Navigate to="/main/transact" />;
+	if (settle) {
+		return <Navigate to="/main/settle" />;
 	}
 
     if (oweList) {
@@ -177,6 +178,8 @@ function Dashboard() {
         return <Navigate to="/main/owing" />;
     
     }
+
+
 
 	return (
 		<>
@@ -197,7 +200,7 @@ function Dashboard() {
 							</i>
 						</div>
 						<div className="text-right">
-							<p className="text-2xl">$ {owed}</p>
+							<p className="text-2xl">$ 452</p>
 							<p>owed</p>
 						</div>
 					</div>
@@ -215,7 +218,7 @@ function Dashboard() {
 							</i>
 						</div>
 						<div className="text-right">
-							<p className="text-2xl">$ {owing}</p>
+							<p className="text-2xl">$ 273</p>
 							<p>owing</p>
 						</div>
 					</div>
@@ -233,7 +236,7 @@ function Dashboard() {
 							</i>
 						</div>
 						<div className="text-right">
-							<p className="text-2xl">$ {disputed}</p>
+							<p className="text-2xl">$ 0</p>
 							<p>Disputed</p>
 						</div>
 					</div>
@@ -250,7 +253,7 @@ function Dashboard() {
 									<div className="border-b">
 										<div className="flex justify-center px-6 -mb-px">
 											<h3 className=" py-4 font-normal text-lg ">
-												owed Transactions
+												Owed
 											</h3>
 										</div>
 									</div>
@@ -270,7 +273,7 @@ function Dashboard() {
 													<th className="p-3">Activity</th>
 													{/* <th className="p-3">main</th> */}
 													<th className="p-3"></th>
-													<th className="p-3">name</th>
+													<th className="p-3">Name</th>
 													<th className="p-3 text-right">Amount</th>
 													<th className="p-3"></th>
 												</tr>
@@ -280,28 +283,102 @@ function Dashboard() {
 													return (
 														<tr className="border-b border-opacity-20  dark:border-gray-100  dark:bg-gray-200 space-y-6">
 															<td className="p-3">
-																<p>{t.payer_id*20}</p>
+																<p>Hawai Trip</p>
 															</td>
 															<td className="p-3">
-																<p>{t.created_at}</p>
+																<p></p>
 																{/* <p className="dark:text-gray-400">Friday</p> */}
 															</td>
 															<td className="p-3">
-																<p>{t.updated_at}</p>
+																<p>Mat G.</p>
 																{/* <p className="dark:text-gray-400">Tuesday</p> */}
 															</td>
 															<td className="p-3 text-right">
-																<p>$ {t.amount}</p>
+																<p>$ 56</p>
 															</td>
 															<td className="p-3 text-right">
-																	{colorCode(t.condition)}
-																{/* <button className="px-3 py-1 font-semibold rounded-md dark:bg-green-400 dark:text-gray-900">
-																	<span>{t.condition}</span>
-																</button> */}
+																
+																<button className="px-3 py-1 font-semibold rounded-md dark:bg-green-400 dark:text-gray-900"
+                                                                onClick={openModal}
+                                                                >
+																	<span>Pending</span>
+																</button>
 															</td>
 														</tr>
 													);
 												})}
+
+
+                                                <tr className="border-b border-opacity-20  dark:border-gray-100  dark:bg-gray-200 space-y-6">
+															<td className="p-3">
+																<p>Rent</p>
+															</td>
+															<td className="p-3">
+																<p>Robin G.</p>
+																{/* <p className="dark:text-gray-400">Friday</p> */}
+															</td>
+															<td className="p-3">
+																<p></p>
+																{/* <p className="dark:text-gray-400">Tuesday</p> */}
+															</td>
+															<td className="p-3 text-right">
+																<p>$ 489</p>
+															</td>
+															<td className="p-3 text-right">
+														
+																<button className="px-3 py-1 font-semibold rounded-md dark:bg-red-400 dark:text-gray-900"
+                                                                onClick={openModal}>
+																	<span>pending</span>
+																</button>
+															</td>
+													</tr>
+
+                                                    <tr className="border-b border-opacity-20  dark:border-gray-100  dark:bg-gray-200 space-y-6">
+															<td className="p-3">
+																<p>Hawaii Trip</p>
+															</td>
+															<td className="p-3">
+																<p></p>
+																{/* <p className="dark:text-gray-400">Friday</p> */}
+															</td>
+															<td className="p-3">
+																<p>Mat G.</p>
+																{/* <p className="dark:text-gray-400">Tuesday</p> */}
+															</td>
+															<td className="p-3 text-right">
+																<p>$ 56</p>
+															</td>
+															<td className="p-3 text-right">
+																
+																<button className="px-3 py-1 font-semibold rounded-md dark:bg-green-400 dark:text-gray-900">
+																	<span>Paid</span>
+																</button>
+															</td>
+														</tr>
+
+                                                        <tr className="border-b border-opacity-20  dark:border-gray-100  dark:bg-gray-200 space-y-6">
+															<td className="p-3">
+																<p>Movie Tickets</p>
+															</td>
+															<td className="p-3">
+																<p>Adam A.</p>
+																{/* <p className="dark:text-gray-400">Friday</p> */}
+															</td>
+															<td className="p-3">
+																<p></p>
+																{/* <p className="dark:text-gray-400">Tuesday</p> */}
+															</td>
+															<td className="p-3 text-right">
+																<p>$ 89</p>
+															</td>
+															<td className="p-3 text-right">
+														
+																<button className="px-3 py-1 font-semibold rounded-md dark:bg-red-400 dark:text-gray-900"
+                                                                onClick={openModal}>
+																	<span>pending</span>
+																</button>
+															</td>
+													</tr>
 
 											</tbody>
 										</table>
@@ -316,7 +393,7 @@ function Dashboard() {
 								<div className="flex absolute justify-center z-50">
 									<div className="flex flex-col  max-w-md gap-2 p-6 rounded-md shadow-md dark:bg-gray-900 dark:text-gray-100">
 										<h2 className="text-xl font-semibold leadi tracki">
-											Dispute raised
+											Request
 										</h2>
 
 										<p className="flex-1 dark:text-gray-400">
@@ -389,18 +466,68 @@ function Dashboard() {
 																<p>${t.amount}</p>
 															</td>
 															<td className="p-3 text-right">
-																{colorCode(t.condition)}
-																{/* <button
+																
+																 <button
 																	type="button"
 																	className="px-3 py-1 cursor-pointer font-semibold rounded-md dark:bg-green-400 dark:text-gray-900"
-																	onclick={openModal}
+																	onclick={()=>openModal}
 																>
-																	<span>{t.condition}</span>
-																</button> */}
+																	<span>Paid</span>
+																</button>
 															</td>
 														</tr>
 													);
 												})}
+
+                                                <tr className="border-b border-opacity-20  dark:border-gray-100  dark:bg-gray-200 space-y-6">
+															<td className="p-3">
+																<p>Hawaii Trip</p>
+															</td>
+															<td className="p-3">
+																<p>Rui Wei</p>
+																{/* <p className="dark:text-gray-400">Friday</p> */}
+															</td>
+															<td className="p-3">
+																<p></p>
+																{/* <p className="dark:text-gray-400">Tuesday</p> */}
+															</td>
+															<td className="p-3 text-right">
+																<p>$ 31</p>
+															</td>
+															<td className="p-3 text-right">
+														
+																<button className="px-3 py-1 font-semibold rounded-md dark:bg-green-400 dark:text-gray-900"
+                                                                onClick={()=>setSettle(true)}
+                                                                >
+																	<span>pay</span>
+																</button>
+															</td>
+													</tr>
+
+                                                    <tr className="border-b border-opacity-20  dark:border-gray-100  dark:bg-gray-200 space-y-6">
+															<td className="p-3">
+																<p>Utilities</p>
+															</td>
+															<td className="p-3">
+																<p></p>
+																{/* <p className="dark:text-gray-400">Friday</p> */}
+															</td>
+															<td className="p-3">
+																<p>Adam A.</p>
+																{/* <p className="dark:text-gray-400">Tuesday</p> */}
+															</td>
+															<td className="p-3 text-right">
+																<p>$ 29</p>
+															</td>
+															<td className="p-3 text-right">
+																
+																<button className="px-3 py-1 font-semibold rounded-md dark:bg-green-400 dark:text-gray-900"
+                                                                onClick={()=>setSettle(true)}
+                                                                >
+																	<span>pay</span>
+																</button>
+															</td>
+														</tr>
 
 											</tbody>
 										</table>
@@ -411,23 +538,23 @@ function Dashboard() {
 					</div>
 				</div>
 
-				{/* {show ?
-<div className="flex absolute justify-center z-50">
-<div className="flex flex-col  max-w-md gap-2 p-6 rounded-md shadow-md dark:bg-gray-900 dark:text-gray-100">
-	<h2 className="text-xl font-semibold leadi tracki">Dispute raised</h2>
+			 {/* {show ?
+            <div className="flex absolute justify-center z-50">
+            <div className="flex flex-col  max-w-md gap-2 p-6 rounded-md shadow-md dark:bg-gray-900 dark:text-gray-100">
+                <h2 className="text-xl font-semibold leadi tracki">Request Payment</h2>
 
-	<p className="flex-1 dark:text-gray-400"> Complete the transaction or dispute the transaction
-	</p>
-	<div className="flex flex-col justify-center gap-3 mt-6 sm:flex-row">
-		<button className="px-6 py-2 rounded-sm"
-		onClick={closeModal}
-		>Complete</button>
-		<button className="px-6 py-2 rounded-sm shadow-sm dark:bg-violet-400 dark:text-gray-900"
-		onClick={closeModal}
-		>Dispute</button>
-	</div>
-</div>
-</div>: null } */}
+                <p className="flex-1 dark:text-gray-400"> Complete the transaction or dispute the transaction
+                </p>
+                <div className="flex flex-col justify-center gap-3 mt-6 sm:flex-row">
+                    <button className="px-6 py-2 rounded-sm"
+                    onClick={closeModal}
+                    >Request</button>
+                    <button className="px-6 py-2 rounded-sm shadow-sm dark:bg-violet-400 dark:text-gray-900"
+                    onClick={closeModal}
+                    >Dispute</button>
+                </div>
+            </div>
+            </div>: null }  */}
 			</div>
 		</>
 	);
