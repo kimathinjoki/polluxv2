@@ -16,7 +16,7 @@ class User(db.Model):
 class Activity(db.Model):
    description=TextField()
    created=DateTimeField(default=datetime.datetime.now)
-   budget=DecimalField(decimal_places=2, auto_round=True, default=0.0)
+   budget=FloatField()
    user=ForeignKeyField(User)
    
    class Meta:
