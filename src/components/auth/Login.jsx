@@ -10,20 +10,20 @@ function Login() {
 	const [isLogged, setIsLogged] = useState(false);
 
 	if (isLogged) {
-		return <Navigate to="/client" />;
+		return <Navigate to="/main" />;
 	}
 
 	function handleLogin(e) {
 		e.preventDefault();
 		axios
-			.post('http://127.0.0.1:3000/login', {
+			.post('http://127.0.0.1:3001/login', {
 				email,
 				password,
 			})
 			.then((response) => {
 				if (response.status === 200) {
 					console.log(response);
-					const user_id = response.data.user.id;
+					const user_id = response.data.userId;
 					sessionStorage.setItem('user_id', user_id);
 					const token = response.data.token;
 					localStorage.setItem('token', token);

@@ -2,7 +2,7 @@ import './Register.scss';
 import NavbarTop from '../navbar/NavbarTop';
 import { Link, Navigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import fast from '../resource/fast-forward.png';
+import fast from '../resources/logo_cropped.png';
 import axios from 'axios';
 import { FaInfoCircle } from 'react-icons/fa';
 
@@ -93,28 +93,6 @@ function Register() {
 				if (response.status === 201) {
 					console.log(response);
 					const userId = response.data.id;
-					// const token = response.data.token
-					const balance = 0;
-					// setUserId(response.data.user.id)
-					// setBalance(0.0)
-					// setToken(response.data.token)
-					// new_account(response.data.user.id, 0.00)
-
-					axios
-						.post('http://127.0.0.1:3000/accounts/new', {
-							user_id: userId,
-							balance: balance,
-						})
-						.then((response) => {
-							console.log(response.data);
-						})
-						.then((response) => {
-							console.log(response);
-							// setBalance(response.data.balance)
-						})
-						.catch((err) => {
-							console.log(err);
-						});
 
 					setSignIn(true);
 				} else if (response.status === 422) {
@@ -241,7 +219,7 @@ function Register() {
 							<label className="input-label" htmlFor="username">
 								Username
 							</label>
-							<div
+							{/* <div
 								id="usernameerrornote"
 								className={
 									username && usernameFocus && !validName
@@ -263,7 +241,7 @@ function Register() {
 									<FaInfoCircle />{' '}
 									<p>Letters, numbers, underscores, hyphens allowed.</p>
 								</span>
-							</div>
+							</div> */}
 						</div>
 
 						<div className="input">
@@ -284,7 +262,7 @@ function Register() {
 							<label className="input-label" htmlFor="phone_number">
 								Phone Number
 							</label>
-							<div
+							{/* <div
 								id="phonenumbererrornote"
 								className={
 									phone_number && phoneNumberFocus && !validNumber
@@ -311,7 +289,7 @@ function Register() {
 										<p>Letters, underscores and hyphens not allowed.</p>
 									</span>
 								)}
-							</div>
+							</div> */}
 						</div>
 
 						<div className="input">
@@ -331,7 +309,7 @@ function Register() {
 								Email
 							</label>
 
-							<div
+							{/* <div
 								id="emailerrornote"
 								className={
 									email && emailFocus && !validEmail
@@ -362,7 +340,7 @@ function Register() {
 									<FaInfoCircle />
 									<p> Must have a .</p>
 								</span>
-							</div>
+							</div> */}
 						</div>
 
 						<div className="input">
@@ -381,7 +359,7 @@ function Register() {
 							<label className="input-label" htmlFor="password">
 								Password
 							</label>
-							<div
+							{/* <div
 								id="passworderrornote"
 								className={
 									password && passwordFocus && !validPassword
@@ -433,7 +411,7 @@ function Register() {
 										</div>
 									</div>
 								)}
-							</div>
+							</div> */}
 						</div>
 
 						<div className="action">
