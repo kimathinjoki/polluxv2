@@ -3,8 +3,7 @@ import { TbSquareArrowDown } from 'react-icons/tb';
 import axios from "axios";
 
 function Owed() {
-	const tableHeads = ['Invoice', 'Client', 'Issued', 'Due', 'Amount', 'Status'];
-
+	const tableHeads = ['Activity', 'Name', 'Date', 'Amount', 'Participants'];
 	// set owed transactions
 	const [owed, setOwed] = useState([])
 
@@ -122,7 +121,7 @@ function Owed() {
 										openModal()
 									}}
 									>
-										<span>Owed</span>
+										<span>View</span>
 									</button>
 								</td>
 							</tr>})}

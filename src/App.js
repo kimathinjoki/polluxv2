@@ -11,6 +11,7 @@ import Owed from './components/sections/Owed';
 import Owing from './components/sections/Owing';
 import Settle from './components/sections/Settle';
 import AddActivity from './components/sections/AddActivity';
+import AddExpense from './components/sections/AddExpense';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path='/main/owed' element={<Owed/>}/>
         <Route path='/main/settle' element={<Settle/>}/>
         <Route path='/main/add_activity' element={<AddActivity/>}/>
+        <Route path='/main/add_expense' element={<AddExpense/>}/>
       </Route>
 
 

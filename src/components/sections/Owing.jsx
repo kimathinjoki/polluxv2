@@ -3,7 +3,7 @@ import axios from "axios";
 import { TbSquareArrowUp } from 'react-icons/tb';
 
 function Owing() {
-	const tableHeads = ['Activity', 'Name', 'Date', 'Amount'];
+	const tableHeads = ['Activity', 'Name', 'Date', 'Amount', 'Participants'];
 
 	const [showModal, setShowModal] = useState(false);
 
@@ -191,7 +191,7 @@ function Owing() {
 											openModal()
 										}}
 									>
-										<span>Owing</span>
+										<span>View</span>
 									</button>
 								</td>
 							</tr>
@@ -208,13 +208,9 @@ function Owing() {
 					<div className="flex absolute justify-center z-50">
 						<div className="flex flex-col  max-w-md gap-2 p-6 rounded-md shadow-md dark:bg-gray-900 dark:text-gray-100">
 							<h2 className="text-xl font-semibold leadi tracki">
-								Dispute raised
+								Participants
 							</h2>
 
-							<p className="flex-1 dark:text-gray-400">
-								{' '}
-								Complete the transaction or dispute the transaction
-							</p>
 							<div className="flex flex-col justify-center gap-3 mt-6 sm:flex-row">
 								<button className="px-6 py-2 rounded-sm shadow-sm dark:bg-green-600 dark:text-gray-900" onClick={()=>{
 									completeTransaction()

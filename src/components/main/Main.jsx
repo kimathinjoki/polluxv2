@@ -170,7 +170,7 @@ function Main() {
 
 								<li>
 									<Link
-										to="/main/settle"
+										to="/main/add_expense"
 										className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-violet-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-violet-500 dark:hover:border-gray-800 pr-6"
 									>
 										<span className="inline-flex justify-center items-center ml-4">
@@ -190,7 +190,7 @@ function Main() {
 
 								<li>
 									<Link
-										to="/main/payment"
+										to="/main/activities"
 										className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-violet-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-violet-500 dark:hover:border-gray-800 pr-6"
 									>
 										<span className="inline-flex justify-center items-center ml-4">
