@@ -3,7 +3,7 @@ import { TbSquareArrowDown } from 'react-icons/tb';
 import axios from "axios";
 
 function Owed() {
-	const tableHeads = ['Activity', 'Name', 'Date', 'Amount', 'Participants'];
+	const tableHeads = ['Activity', 'Name', 'Date', 'Amount', 'Request', 'Expenses'];
 	// set owed transactions
 	const [owed, setOwed] = useState([])
 
@@ -103,11 +103,11 @@ function Owed() {
 								</td>
 								<td className="p-3">
 									<p>{transaction.created_at}</p>
-									<p className="dark:text-gray-400">Friday</p>
+									<p className="dark:text-gray-400"></p>
 								</td>
 								<td className="p-3">
 									<p>{transaction.updated_at}</p>
-									<p className="dark:text-gray-400">Tuesday</p>
+									<p className="dark:text-gray-400"></p>
 								</td>
 								<td className="p-3 text-right">
 									<p>$ {transaction.amount}</p>
@@ -124,7 +124,61 @@ function Owed() {
 										<span>View</span>
 									</button>
 								</td>
+                                <td className="p-3 text-right">
+									<button 
+									type="button"
+									className="px-3 py-1 font-semibold rounded-md dark:bg-violet-400 dark:text-gray-900"
+									onClick={()=>{
+										// setTransId(transaction.id)
+										openModal()
+									}}
+									>
+										<span>View</span>
+									</button>
+								</td>
+                                
 							</tr>})}
+
+                            <tr className="border-b border-opacity-20  dark:border-gray-100 dark:bg-gray-200">
+								<td className="p-3">
+									<p>Hawai Trip</p>
+								</td>
+								<td className="p-3">
+									<p>Mat G.</p>
+								</td>
+								<td className="p-3">
+									<p>01/02/2024</p>
+									<p className="dark:text-gray-400">Friday</p>
+								</td>
+								<td className="p-3 text-right">
+									<p>$ 59</p>
+								</td>
+								<td className="p-3 text-right">
+									<button 
+									type="button"
+									className="px-3 py-1 font-semibold rounded-md dark:bg-violet-400 dark:text-gray-900"
+									onClick={()=>{
+										// setTransId(transaction.id)
+										openModal()
+									}}
+									>
+										<span>View</span>
+									</button>
+								</td>
+                                <td className="p-3 text-right">
+									<button 
+									type="button"
+									className="px-3 py-1 font-semibold rounded-md dark:bg-violet-400 dark:text-gray-900"
+									onClick={()=>{
+										// setTransId(transaction.id)
+										// openModal()
+									}}
+									>
+										<span>View</span>
+									</button>
+								</td>
+                                
+							</tr>
 
 		
 						</tbody>
@@ -135,7 +189,7 @@ function Owed() {
 					<div className="flex absolute justify-center z-50">
 						<div className="flex flex-col  max-w-md gap-2 p-6 rounded-md shadow-md dark:bg-gray-900 dark:text-gray-100">
 							<h2 className="text-xl font-semibold leadi tracki">
-								Raise Dispute
+								Request Payment
 							</h2>
 
 							<p className="flex-1 dark:text-gray-400">
@@ -143,11 +197,11 @@ function Owed() {
 								Raise a dispute on this transaction
 							</p>
 							<div className="flex flex-col justify-center gap-3 mt-6 sm:flex-row">
-								{/* <button className="px-6 py-2 rounded-sm shadow-sm dark:bg-green-600 dark:text-gray-900" onClick={()=>{
+								<button className="px-6 py-2 rounded-sm shadow-sm dark:bg-green-600 dark:text-gray-900" onClick={()=>{
 									closeModal()
 									}}>
-									Dispute
-								</button> */}
+									Request
+								</button>
 								<button
 									className="px-6 py-2 rounded-sm shadow-sm dark:bg-red-600 dark:text-gray-900"
 									onClick={()=>{

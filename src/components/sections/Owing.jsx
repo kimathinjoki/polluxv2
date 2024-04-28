@@ -1,15 +1,17 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
 import { TbSquareArrowUp } from 'react-icons/tb';
+import { Navigate } from 'react-router-dom';
 
 function Owing() {
-	const tableHeads = ['Activity', 'Name', 'Date', 'Amount', 'Participants'];
+	const tableHeads = ['Activity', 'Name', 'Date', 'Amount', 'Expenses', 'Pay'];
 
 	const [showModal, setShowModal] = useState(false);
 
 	const [transId, setTransId ] = useState(0)
 	const [owing, setOwing] = useState([])
 	const [client, setClient] = useState("")
+    // const [settle, setSettle] = useState[false]
 
 	// const [receiver_id, setReceiver_id] = useState(0)
 	// const [payer_id, setPayer_id] =useState(0)
@@ -28,75 +30,27 @@ function Owing() {
 	function closeModal() {
 		setShowModal(false);
 	}
+   
+   
+
+	// useEffect(()=>{
+	// 	axios.get(`http://127.0.0.1:3001/owing/${userId}`,{
+	// 		headers: {
+	// 		  'Authorization': `Bearer ${token}`
+	// 		}
+	// 	  })
+	// 	  .then((response)=>{
+	// 		console.log(response.data)
+	// 		setOwing(...owing, response.data.transactions)
+	// 	  })
+	// 	  .catch((err)=>{
+	// 		console.log(err)
+	// 	  })
+
+	// },[])
 
 
-	useEffect(()=>{
-
-		// gets all outgoing and open transaction
-
-		axios.get(`http://127.0.0.1:3001/owing/${userId}`,{
-			headers: {
-			  'Authorization': `Bearer ${token}`
-			}
-		  })
-		  .then((response)=>{
-			console.log(response.data)
-			setOwing(...owing, response.data.transactions)
-		  })
-		  .catch((err)=>{
-			console.log(err)
-		  })
-
-	},[])
-
-
-
-	function completeTransaction(){
-		axios.post(`http://127.0.0.1:3001/transaction/condition/${transId}`,{
-			"condition": 1
-		},{
-			headers:{
-				"Authorization": `Bearer ${token}`
-			  }
-		})
-		.then((response)=>{
-			const receiver = response.data.receiver_id
-			const payer = response.data.payer_id
-			const amount = response.data.amount
-			// amending payer balance
-			axios.post(`http://127.0.0.1:3001/accounts/minus/${payer}`,{
-				"balance": Number(amount)
-			},{
-				headers:{
-					"Authorization": `Bearer ${token}`
-				  }
-			}).then((response)=>{
-				console.log(response)
-			})
-			.catch((err)=>{
-				console.log(err)
-			})
-
-			// amending receiver balance
-
-			axios.post(`http://127.0.0.1:3001/accounts/add/${receiver}`,{
-				"balance": Number(amount)
-			},{
-				headers:{
-					"Authorization": `Bearer ${token}`
-				  }
-			}).then((response)=>{
-				console.log(response)
-			})
-			.catch((err)=>{
-				console.log(err)
-			})
-
-			
-
-		})
-
-	}
+   
 
 	function setDispute(){
 		axios.post(`http://127.0.0.1:3001/transaction/condition/${transId}`,{
@@ -125,6 +79,10 @@ function Owing() {
 				})
 		return client
 	}
+
+    // if(settle){
+    //     return <Navigate to='/main/settle'/>
+    // }
 
 			return(
 				<>
@@ -171,11 +129,7 @@ function Owing() {
 								</td>
 								<td className="p-3">
 									<p>{transaction.created_at}</p>
-									{/* <p className="dark:text-gray-400">Friday</p> */}
-								</td>
-								<td className="p-3">
-									<p>{transaction.updated_at}</p>
-									{/* <p className="dark:text-gray-400">Tuesday</p> */}
+			
 								</td>
 								<td className="p-3 text-right">
 									<p>$ {transaction.amount}</p>
@@ -196,6 +150,51 @@ function Owing() {
 								</td>
 							</tr>
 							})}
+                            
+                            <tr className="border-b border-opacity-20  dark:border-gray-100 dark:bg-gray-200">
+								<td className="p-3">
+									<p>Hawai Trip</p>
+								</td>
+								<td className="p-3">
+									<p>Kimathi Njoki</p>
+								</td>
+								<td className="p-3">
+									<p> 01/02/2024</p>
+									
+								</td>
+								<td className="p-3 text-right">
+									<p>$28</p>
+								</td>
+								<td className="p-3 text-right">
+									<button
+										type="button"
+										data-modal-target="#defaultModal"
+										data-modal-toggle="defaultModal"
+										className=" cursor-pointer px-3 py-1 font-semibold rounded-md dark:bg-orange-400 dark:text-gray-900"
+										onClick={()=>{
+											setTransId(transId);
+											openModal()
+										}}
+									>
+										<span>View</span>
+									</button>
+								</td>
+
+                                <td className="p-3 text-right">
+									<button
+										type="button"
+										data-modal-target="#defaultModal"
+										data-modal-toggle="defaultModal"
+										className=" cursor-pointer px-3 py-1 font-semibold rounded-md dark:bg-orange-400 dark:text-gray-900"
+										onClick={()=>{
+											setTransId(transId);
+											openModal()
+										}}
+									>
+										<span>View</span>
+									</button>
+								</td>
+							</tr>
 
 							
 						</tbody>
@@ -208,16 +207,16 @@ function Owing() {
 					<div className="flex absolute justify-center z-50">
 						<div className="flex flex-col  max-w-md gap-2 p-6 rounded-md shadow-md dark:bg-gray-900 dark:text-gray-100">
 							<h2 className="text-xl font-semibold leadi tracki">
-								Participants
+								Settle
 							</h2>
 
 							<div className="flex flex-col justify-center gap-3 mt-6 sm:flex-row">
 								<button className="px-6 py-2 rounded-sm shadow-sm dark:bg-green-600 dark:text-gray-900" onClick={()=>{
-									completeTransaction()
+                                    // setSettle(true)
 									removeFromList(transId)
 									closeModal()
 									}}>
-									Complete
+									Pay
 								</button>
 								<button
 									className="px-6 py-2 rounded-sm shadow-sm dark:bg-red-600 dark:text-gray-900"

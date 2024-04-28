@@ -1,0 +1,1274 @@
+Started POST "/register" for 127.0.0.1 at 2024-04-27 14:47:35 -0500
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 1 pending migration:
+
+20240427182350_create_users.rb
+
+
+):
+  
+activerecord (7.0.8.1) lib/active_record/migration.rb:662:in `check_pending!'
+activerecord (7.0.8.1) lib/active_record/migration.rb:627:in `block (2 levels) in call'
+activesupport (7.0.8.1) lib/active_support/file_update_checker.rb:83:in `execute'
+activerecord (7.0.8.1) lib/active_record/migration.rb:632:in `block in call'
+activerecord (7.0.8.1) lib/active_record/migration.rb:624:in `synchronize'
+activerecord (7.0.8.1) lib/active_record/migration.rb:624:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.8.1) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/show_exceptions.rb:29:in `call'
+railties (7.0.8.1) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.8.1) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.8.1) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.8.1) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.8.1) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.8.1) lib/rails/rack/logger.rb:25:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.9) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.8.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.9) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/host_authorization.rb:138:in `call'
+railties (7.0.8.1) lib/rails/engine.rb:530:in `call'
+puma (5.6.6) lib/puma/configuration.rb:252:in `call'
+puma (5.6.6) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.6) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.6) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.6) lib/puma/server.rb:443:in `process_client'
+puma (5.6.6) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20240427182350)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar, "first_name" varchar, "last_name" varchar, "email" varchar, "phone_number" varchar, "password_digest" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20240427182350"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2024-04-27 19:48:33.466620"], ["updated_at", "2024-04-27 19:48:33.466620"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/register" for 127.0.0.1 at 2024-04-27 14:48:37 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+NameError (undefined local variable or method `has_secure_password' for UsersController:Class):
+  
+app/controllers/users_controller.rb:4:in `<class:UsersController>'
+app/controllers/users_controller.rb:1:in `<main>'
+Started POST "/register" for 127.0.0.1 at 2024-04-27 14:49:10 -0500
+  
+NameError (undefined local variable or method `has_secure_password' for UsersController:Class):
+  
+app/controllers/users_controller.rb:4:in `<class:UsersController>'
+app/controllers/users_controller.rb:1:in `<main>'
+Started POST "/register" for 127.0.0.1 at 2024-04-27 14:49:11 -0500
+  
+NameError (undefined local variable or method `has_secure_password' for UsersController:Class):
+  
+app/controllers/users_controller.rb:4:in `<class:UsersController>'
+app/controllers/users_controller.rb:1:in `<main>'
+Started POST "/register" for 127.0.0.1 at 2024-04-27 14:49:26 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+NameError (undefined local variable or method `has_secure_password' for UsersController:Class):
+  
+app/controllers/users_controller.rb:4:in `<class:UsersController>'
+app/controllers/users_controller.rb:1:in `<main>'
+Started POST "/register" for 127.0.0.1 at 2024-04-27 14:50:11 -0500
+Processing by UsersController#register as */*
+  Parameters: {"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "phone_number"=>"6368490000", "user"=>{"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "phone_number"=>"6368490000"}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (15.97ms)
+Completed 422 Unprocessable Entity in 66ms (Views: 19.9ms | ActiveRecord: 2.3ms | Allocations: 40426)
+
+
+Started POST "/register" for 127.0.0.1 at 2024-04-27 14:51:30 -0500
+Processing by UsersController#register as */*
+  Parameters: {"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "phone_number"=>"6368490000", "password"=>"[FILTERED]", "user"=>{"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "phone_number"=>"6368490000"}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (1.02ms)
+Completed 422 Unprocessable Entity in 3ms (Views: 1.7ms | ActiveRecord: 0.0ms | Allocations: 692)
+
+
+Started POST "/register" for 127.0.0.1 at 2024-04-27 14:51:31 -0500
+Processing by UsersController#register as */*
+  Parameters: {"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "phone_number"=>"6368490000", "password"=>"[FILTERED]", "user"=>{"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "phone_number"=>"6368490000"}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.39ms)
+Completed 422 Unprocessable Entity in 2ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 691)
+
+
+Started POST "/register" for 127.0.0.1 at 2024-04-27 14:51:31 -0500
+Processing by UsersController#register as */*
+  Parameters: {"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "phone_number"=>"6368490000", "password"=>"[FILTERED]", "user"=>{"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "phone_number"=>"6368490000"}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.83ms)
+Completed 422 Unprocessable Entity in 3ms (Views: 1.7ms | ActiveRecord: 0.0ms | Allocations: 691)
+
+
+Started GET "/users" for 127.0.0.1 at 2024-04-27 14:51:50 -0500
+Processing by UsersController#index as */*
+  Parameters: {"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "phone_number"=>"6368490000", "password"=>"[FILTERED]", "user"=>{"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "phone_number"=>"6368490000"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:10:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.17ms)
+Completed 200 OK in 18ms (Views: 17.5ms | ActiveRecord: 0.2ms | Allocations: 2727)
+
+
+Started POST "/register" for 127.0.0.1 at 2024-04-27 14:52:25 -0500
+Processing by UsersController#register as */*
+  Parameters: {"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "phone_number"=>"6368490000", "password"=>"[FILTERED]", "user"=>{"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "phone_number"=>"6368490000"}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.49ms)
+Completed 422 Unprocessable Entity in 5ms (Views: 1.3ms | ActiveRecord: 0.9ms | Allocations: 3079)
+
+
+Started POST "/register" for 127.0.0.1 at 2024-04-27 14:55:38 -0500
+Processing by UsersController#register as */*
+  Parameters: {"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "phone_number"=>"6368490000", "password"=>"[FILTERED]", "user"=>{"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "phone_number"=>"6368490000"}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (13.72ms)
+Completed 422 Unprocessable Entity in 16ms (Views: 14.3ms | ActiveRecord: 0.0ms | Allocations: 681)
+
+
+Started POST "/register" for 127.0.0.1 at 2024-04-27 14:55:38 -0500
+Processing by UsersController#register as */*
+  Parameters: {"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "phone_number"=>"6368490000", "password"=>"[FILTERED]", "user"=>{"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "phone_number"=>"6368490000"}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.46ms)
+Completed 422 Unprocessable Entity in 2ms (Views: 1.0ms | ActiveRecord: 0.0ms | Allocations: 679)
+
+
+Started POST "/register" for 127.0.0.1 at 2024-04-27 14:55:39 -0500
+Processing by UsersController#register as */*
+  Parameters: {"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "phone_number"=>"6368490000", "password"=>"[FILTERED]", "user"=>{"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "phone_number"=>"6368490000"}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.39ms)
+Completed 422 Unprocessable Entity in 2ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 679)
+
+
+Started POST "/register" for 127.0.0.1 at 2024-04-27 14:55:39 -0500
+Processing by UsersController#register as */*
+  Parameters: {"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "phone_number"=>"6368490000", "password"=>"[FILTERED]", "user"=>{"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "phone_number"=>"6368490000"}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.38ms)
+Completed 422 Unprocessable Entity in 2ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 679)
+
+
+Started POST "/register" for 127.0.0.1 at 2024-04-27 14:55:39 -0500
+Processing by UsersController#register as */*
+  Parameters: {"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "phone_number"=>"6368490000", "password"=>"[FILTERED]", "user"=>{"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "phone_number"=>"6368490000"}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.41ms)
+Completed 422 Unprocessable Entity in 2ms (Views: 1.0ms | ActiveRecord: 0.0ms | Allocations: 679)
+
+
+Started POST "/register" for 127.0.0.1 at 2024-04-27 14:55:40 -0500
+Processing by UsersController#register as */*
+  Parameters: {"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "phone_number"=>"6368490000", "password"=>"[FILTERED]", "user"=>{"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "phone_number"=>"6368490000"}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.6ms)
+Completed 422 Unprocessable Entity in 2ms (Views: 1.0ms | ActiveRecord: 0.0ms | Allocations: 679)
+
+
+Started POST "/register" for 127.0.0.1 at 2024-04-27 14:55:40 -0500
+Processing by UsersController#register as */*
+  Parameters: {"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "phone_number"=>"6368490000", "password"=>"[FILTERED]", "user"=>{"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "phone_number"=>"6368490000"}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.38ms)
+Completed 422 Unprocessable Entity in 2ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 679)
+
+
+Started POST "/register" for 127.0.0.1 at 2024-04-27 14:55:40 -0500
+Processing by UsersController#register as */*
+  Parameters: {"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "phone_number"=>"6368490000", "password"=>"[FILTERED]", "user"=>{"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "phone_number"=>"6368490000"}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.57ms)
+Completed 422 Unprocessable Entity in 2ms (Views: 1.1ms | ActiveRecord: 0.0ms | Allocations: 679)
+
+
+Started POST "/register" for 127.0.0.1 at 2024-04-27 14:55:40 -0500
+Processing by UsersController#register as */*
+  Parameters: {"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "phone_number"=>"6368490000", "password"=>"[FILTERED]", "user"=>{"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "phone_number"=>"6368490000"}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.37ms)
+Completed 422 Unprocessable Entity in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 679)
+
+
+Started POST "/register" for 127.0.0.1 at 2024-04-27 14:55:40 -0500
+Processing by UsersController#register as */*
+  Parameters: {"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "phone_number"=>"6368490000", "password"=>"[FILTERED]", "user"=>{"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "phone_number"=>"6368490000"}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.37ms)
+Completed 422 Unprocessable Entity in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 679)
+
+
+Started POST "/register" for 127.0.0.1 at 2024-04-27 14:55:41 -0500
+Processing by UsersController#register as */*
+  Parameters: {"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "phone_number"=>"6368490000", "password"=>"[FILTERED]", "user"=>{"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "phone_number"=>"6368490000"}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.46ms)
+Completed 422 Unprocessable Entity in 2ms (Views: 0.9ms | ActiveRecord: 0.0ms | Allocations: 679)
+
+
+Started POST "/register" for 127.0.0.1 at 2024-04-27 14:55:41 -0500
+Processing by UsersController#register as */*
+  Parameters: {"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "phone_number"=>"6368490000", "password"=>"[FILTERED]", "user"=>{"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "phone_number"=>"6368490000"}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.38ms)
+Completed 422 Unprocessable Entity in 2ms (Views: 1.0ms | ActiveRecord: 0.0ms | Allocations: 679)
+
+
+Started POST "/register" for 127.0.0.1 at 2024-04-27 14:55:41 -0500
+Processing by UsersController#register as */*
+  Parameters: {"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "phone_number"=>"6368490000", "password"=>"[FILTERED]", "user"=>{"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "phone_number"=>"6368490000"}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.41ms)
+Completed 422 Unprocessable Entity in 2ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 679)
+
+
+Started POST "/register" for 127.0.0.1 at 2024-04-27 15:11:48 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#register as */*
+  Parameters: {"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "user"=>{"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com"}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (5.77ms)
+Completed 422 Unprocessable Entity in 58ms (Views: 9.9ms | ActiveRecord: 0.8ms | Allocations: 39649)
+
+
+Started POST "/register" for 127.0.0.1 at 2024-04-27 15:11:56 -0500
+Processing by UsersController#register as */*
+  Parameters: {"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "password_digest"=>"[FILTERED]", "user"=>{"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "password_digest"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :password_digest. Context: { controller: UsersController, action: register, request: #<ActionDispatch::Request:0x00007feb4bfa76a0>, params: {"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "password_digest"=>"[FILTERED]", "controller"=>"users", "action"=>"register", "user"=>{"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "password_digest"=>"[FILTERED]"}} }[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.55ms)
+Completed 422 Unprocessable Entity in 3ms (Views: 1.3ms | ActiveRecord: 0.0ms | Allocations: 812)
+
+
+Started POST "/register" for 127.0.0.1 at 2024-04-27 15:11:58 -0500
+Processing by UsersController#register as */*
+  Parameters: {"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "password_digest"=>"[FILTERED]", "user"=>{"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "password_digest"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :password_digest. Context: { controller: UsersController, action: register, request: #<ActionDispatch::Request:0x00007feb43601220>, params: {"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "password_digest"=>"[FILTERED]", "controller"=>"users", "action"=>"register", "user"=>{"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "password_digest"=>"[FILTERED]"}} }[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.31ms)
+Completed 422 Unprocessable Entity in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 796)
+
+
+Started POST "/register" for 127.0.0.1 at 2024-04-27 15:11:58 -0500
+Processing by UsersController#register as */*
+  Parameters: {"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "password_digest"=>"[FILTERED]", "user"=>{"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "password_digest"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :password_digest. Context: { controller: UsersController, action: register, request: #<ActionDispatch::Request:0x00007feb4c83e610>, params: {"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "password_digest"=>"[FILTERED]", "controller"=>"users", "action"=>"register", "user"=>{"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "password_digest"=>"[FILTERED]"}} }[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.3ms)
+Completed 422 Unprocessable Entity in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 796)
+
+
+Started POST "/register" for 127.0.0.1 at 2024-04-27 15:11:58 -0500
+Processing by UsersController#register as */*
+  Parameters: {"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "password_digest"=>"[FILTERED]", "user"=>{"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "password_digest"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :password_digest. Context: { controller: UsersController, action: register, request: #<ActionDispatch::Request:0x00007feb4c864d38>, params: {"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "password_digest"=>"[FILTERED]", "controller"=>"users", "action"=>"register", "user"=>{"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "password_digest"=>"[FILTERED]"}} }[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.31ms)
+Completed 422 Unprocessable Entity in 2ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 796)
+
+
+Started POST "/register" for 127.0.0.1 at 2024-04-27 15:12:01 -0500
+Processing by UsersController#register as */*
+  Parameters: {"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "password_digest"=>"[FILTERED]", "user"=>{"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "password_digest"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :password_digest. Context: { controller: UsersController, action: register, request: #<ActionDispatch::Request:0x00007feb4bfe3bc8>, params: {"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "password_digest"=>"[FILTERED]", "controller"=>"users", "action"=>"register", "user"=>{"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "password_digest"=>"[FILTERED]"}} }[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.52ms)
+Completed 422 Unprocessable Entity in 3ms (Views: 1.2ms | ActiveRecord: 0.0ms | Allocations: 784)
+
+
+Started POST "/register" for 127.0.0.1 at 2024-04-27 15:15:11 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#register as */*
+  Parameters: {"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "password_digest"=>"[FILTERED]", "user"=>{"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "password_digest"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :password_digest. Context: { controller: UsersController, action: register, request: #<ActionDispatch::Request:0x00007f9fa5414640>, params: {"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "password_digest"=>"[FILTERED]", "controller"=>"users", "action"=>"register", "user"=>{"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "password_digest"=>"[FILTERED]"}} }[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (8.9ms)
+Completed 422 Unprocessable Entity in 84ms (Views: 12.7ms | ActiveRecord: 0.7ms | Allocations: 39773)
+
+
+Started POST "/register" for 127.0.0.1 at 2024-04-27 15:23:31 -0500
+Processing by UsersController#register as */*
+  Parameters: {"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "user"=>{"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com"}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.96ms)
+Completed 422 Unprocessable Entity in 5ms (Views: 1.7ms | ActiveRecord: 0.5ms | Allocations: 820)
+
+
+Started POST "/register" for 127.0.0.1 at 2024-04-27 15:25:14 -0500
+Processing by UsersController#register as */*
+  Parameters: {"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "user"=>{"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: register, request: #<ActionDispatch::Request:0x00007f9fa9b60058>, params: {"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"register", "user"=>{"username"=>"kim", "first_name"=>"Kimathi", "last_name"=>"Njoki", "email"=>"felixkim09@gmail.com"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:22:in `register'
+  [1m[36mUser Create (6.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "first_name", "last_name", "email", "phone_number", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["username", "kim"], ["first_name", "Kimathi"], ["last_name", "Njoki"], ["email", "felixkim09@gmail.com"], ["phone_number", nil], ["password_digest", "[FILTERED]"], ["created_at", "2024-04-27 20:25:14.595521"], ["updated_at", "2024-04-27 20:25:14.595521"]]
+  ↳ app/controllers/users_controller.rb:22:in `register'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:22:in `register'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.25ms)
+Completed 201 Created in 252ms (Views: 1.0ms | ActiveRecord: 8.9ms | Allocations: 5109)
+
+
+Started POST "/login" for 127.0.0.1 at 2024-04-27 15:25:41 -0500
+  
+ActionController::RoutingError (No route matches [POST] "/login"):
+  
+Started POST "/login" for 127.0.0.1 at 2024-04-27 15:26:13 -0500
+  
+AbstractController::ActionNotFound (The action 'login' could not be found for UsersController):
+  
+actionpack (7.0.8.1) lib/abstract_controller/base.rb:146:in `process'
+actionpack (7.0.8.1) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.8.1) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.8.1) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.8.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.8.1) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.8.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.8.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.8.1) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.9) lib/rack/etag.rb:27:in `call'
+rack (2.2.9) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.9) lib/rack/head.rb:12:in `call'
+activerecord (7.0.8.1) lib/active_record/migration.rb:638:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.8.1) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/show_exceptions.rb:29:in `call'
+railties (7.0.8.1) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.8.1) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.8.1) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.8.1) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.8.1) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.8.1) lib/rails/rack/logger.rb:25:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.9) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.8.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.9) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/host_authorization.rb:138:in `call'
+railties (7.0.8.1) lib/rails/engine.rb:530:in `call'
+puma (5.6.6) lib/puma/configuration.rb:252:in `call'
+puma (5.6.6) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.6) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.6) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.6) lib/puma/server.rb:443:in `process_client'
+puma (5.6.6) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started POST "/login" for 127.0.0.1 at 2024-04-27 15:26:44 -0500
+Processing by SessionsController#login as */*
+  Parameters: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}}
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms | Allocations: 2183)
+
+
+  
+NameError (undefined local variable or method `user_params_global' for #<SessionsController:0x00000000013470>
+Did you mean?  user_global_params):
+  
+app/controllers/sessions_controller.rb:4:in `login'
+Started POST "/login" for 127.0.0.1 at 2024-04-27 15:27:27 -0500
+Processing by SessionsController#login as */*
+  Parameters: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session. Context: { controller: SessionsController, action: login, request: #<ActionDispatch::Request:0x00007f9fa608d110>, params: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "controller"=>"sessions", "action"=>"login", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}} }[0m
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.0ms | Allocations: 2287)
+
+
+  
+NameError (undefined local variable or method `user_params_global' for #<SessionsController:0x00000000016bc0>
+Did you mean?  user_global_params):
+  
+app/controllers/sessions_controller.rb:4:in `login'
+Started POST "/login" for 127.0.0.1 at 2024-04-27 15:27:45 -0500
+Processing by SessionsController#login as */*
+  Parameters: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session. Context: { controller: SessionsController, action: login, request: #<ActionDispatch::Request:0x00007f9fa3485c20>, params: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "controller"=>"sessions", "action"=>"login", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}} }[0m
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.0ms | Allocations: 2285)
+
+
+  
+NameError (undefined local variable or method `user_params_global' for #<SessionsController:0x0000000001a360>
+Did you mean?  user_global_params):
+  
+app/controllers/sessions_controller.rb:4:in `login'
+Started POST "/login" for 127.0.0.1 at 2024-04-27 15:28:15 -0500
+Processing by SessionsController#login as */*
+  Parameters: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session. Context: { controller: SessionsController, action: login, request: #<ActionDispatch::Request:0x00007f9fa60d5190>, params: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "controller"=>"sessions", "action"=>"login", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}} }[0m
+[31mUnpermitted parameter: :session. Context: { controller: SessionsController, action: login, request: #<ActionDispatch::Request:0x00007f9fa60d5190>, params: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "controller"=>"sessions", "action"=>"login", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username = NULL OR email = 'felixkim09@gmail.com') ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:17:in `find_user_by_username_or_email'
+[31mUnpermitted parameter: :session. Context: { controller: SessionsController, action: login, request: #<ActionDispatch::Request:0x00007f9fa60d5190>, params: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "controller"=>"sessions", "action"=>"login", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}} }[0m
+Completed 500 Internal Server Error in 308ms (ActiveRecord: 1.7ms | Allocations: 6957)
+
+
+  
+NameError (undefined local variable or method `user_type' for #<SessionsController:0x0000000001dc40>
+Did you mean?  user_path):
+  
+app/controllers/sessions_controller.rb:22:in `login_as'
+app/controllers/sessions_controller.rb:6:in `login'
+Started POST "/login" for 127.0.0.1 at 2024-04-27 15:28:41 -0500
+Processing by SessionsController#login as */*
+  Parameters: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session. Context: { controller: SessionsController, action: login, request: #<ActionDispatch::Request:0x00007f9fa35942d8>, params: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "controller"=>"sessions", "action"=>"login", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}} }[0m
+[31mUnpermitted parameter: :session. Context: { controller: SessionsController, action: login, request: #<ActionDispatch::Request:0x00007f9fa35942d8>, params: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "controller"=>"sessions", "action"=>"login", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username = NULL OR email = 'felixkim09@gmail.com') ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:17:in `find_user_by_username_or_email'
+[31mUnpermitted parameter: :session. Context: { controller: SessionsController, action: login, request: #<ActionDispatch::Request:0x00007f9fa35942d8>, params: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "controller"=>"sessions", "action"=>"login", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}} }[0m
+Completed 500 Internal Server Error in 291ms (ActiveRecord: 2.0ms | Allocations: 6416)
+
+
+  
+NameError (uninitialized constant ApplicationController::JWT):
+  
+app/controllers/application_controller.rb:12:in `encode'
+app/controllers/sessions_controller.rb:22:in `login_as'
+app/controllers/sessions_controller.rb:6:in `login'
+Started POST "/login" for 127.0.0.1 at 2024-04-27 15:29:56 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#login as */*
+  Parameters: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session. Context: { controller: SessionsController, action: login, request: #<ActionDispatch::Request:0x00007f951b9e1b48>, params: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "controller"=>"sessions", "action"=>"login", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}} }[0m
+[31mUnpermitted parameter: :session. Context: { controller: SessionsController, action: login, request: #<ActionDispatch::Request:0x00007f951b9e1b48>, params: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "controller"=>"sessions", "action"=>"login", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username = NULL OR email = 'felixkim09@gmail.com') ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:17:in `find_user_by_username_or_email'
+[31mUnpermitted parameter: :session. Context: { controller: SessionsController, action: login, request: #<ActionDispatch::Request:0x00007f951b9e1b48>, params: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "controller"=>"sessions", "action"=>"login", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}} }[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.17ms)
+Completed 200 OK in 283ms (Views: 7.9ms | ActiveRecord: 1.0ms | Allocations: 41046)
+
+
+Started GET "/users" for 127.0.0.1 at 2024-04-27 15:30:19 -0500
+Processing by UsersController#index as */*
+  Parameters: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"felixkim09@gmail.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:10:in `index'
+No serializer found for resource: #<User id: 1, username: "kim", first_name: "Kimathi", last_name: "Njoki", email: "felixkim09@gmail.com", phone_number: nil, password_digest: [FILTERED], created_at: "2024-04-27 20:25:14.595521000 +0000", updated_at: "2024-04-27 20:25:14.595521000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with User::ActiveRecord_Relation (0.55ms)
+Completed 200 OK in 11ms (Views: 10.0ms | ActiveRecord: 0.2ms | Allocations: 1854)
+
+
+Started PATCH "/users/1" for 127.0.0.1 at 2024-04-27 15:31:22 -0500
+Processing by UsersController#update as */*
+  Parameters: {"phone_number"=>"6368490000", "id"=>"1", "user"=>{"phone_number"=>"6368490000"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:46:in `set_user'
+[31mUnpermitted parameters: :id, :user. Context: { controller: UsersController, action: update, request: #<ActionDispatch::Request:0x00007f9515e39728>, params: {"phone_number"=>"6368490000", "controller"=>"users", "action"=>"update", "id"=>"1", "user"=>{"phone_number"=>"6368490000"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:31:in `update'
+  [1m[36mUser Update (0.9ms)[0m  [1m[33mUPDATE "users" SET "phone_number" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["phone_number", "6368490000"], ["updated_at", "2024-04-27 20:31:22.817948"], ["id", 1]]
+  ↳ app/controllers/users_controller.rb:31:in `update'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:31:in `update'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.64ms)
+Completed 200 OK in 38ms (Views: 3.0ms | ActiveRecord: 2.8ms | Allocations: 5442)
+
+
+Started OPTIONS "/login" for 127.0.0.1 at 2024-04-27 21:27:19 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mCACHE ActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 5 pending migrations:
+
+20240427214326_create_expenses.rb
+20240427214558_create_activities.rb
+20240427215327_create_participants.rb
+20240427215457_create_settlements.rb
+20240427234812_create_contributions.rb
+
+
+):
+  
+activerecord (7.0.8.1) lib/active_record/migration.rb:662:in `check_pending!'
+activerecord (7.0.8.1) lib/active_record/migration.rb:627:in `block (2 levels) in call'
+activesupport (7.0.8.1) lib/active_support/file_update_checker.rb:83:in `execute'
+activerecord (7.0.8.1) lib/active_record/migration.rb:632:in `block in call'
+activerecord (7.0.8.1) lib/active_record/migration.rb:624:in `synchronize'
+activerecord (7.0.8.1) lib/active_record/migration.rb:624:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.8.1) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/show_exceptions.rb:29:in `call'
+railties (7.0.8.1) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.8.1) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.8.1) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.8.1) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.8.1) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.8.1) lib/rails/rack/logger.rb:25:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.9) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.8.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.9) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/host_authorization.rb:138:in `call'
+railties (7.0.8.1) lib/rails/engine.rb:530:in `call'
+puma (5.6.6) lib/puma/configuration.rb:252:in `call'
+puma (5.6.6) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.6) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.6) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.6) lib/puma/server.rb:443:in `process_client'
+puma (5.6.6) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started OPTIONS "/login" for 127.0.0.1 at 2024-04-27 21:27:59 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mCACHE ActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 5 pending migrations:
+
+20240427214326_create_expenses.rb
+20240427214558_create_activities.rb
+20240427215327_create_participants.rb
+20240427215457_create_settlements.rb
+20240427234812_create_contributions.rb
+
+
+):
+  
+activerecord (7.0.8.1) lib/active_record/migration.rb:662:in `check_pending!'
+activerecord (7.0.8.1) lib/active_record/migration.rb:627:in `block (2 levels) in call'
+activesupport (7.0.8.1) lib/active_support/file_update_checker.rb:83:in `execute'
+activerecord (7.0.8.1) lib/active_record/migration.rb:632:in `block in call'
+activerecord (7.0.8.1) lib/active_record/migration.rb:624:in `synchronize'
+activerecord (7.0.8.1) lib/active_record/migration.rb:624:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.8.1) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/show_exceptions.rb:29:in `call'
+railties (7.0.8.1) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.8.1) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.8.1) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.8.1) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.8.1) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.8.1) lib/rails/rack/logger.rb:25:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.9) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.8.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.9) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/host_authorization.rb:138:in `call'
+railties (7.0.8.1) lib/rails/engine.rb:530:in `call'
+puma (5.6.6) lib/puma/configuration.rb:252:in `call'
+puma (5.6.6) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.6) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.6) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.6) lib/puma/server.rb:443:in `process_client'
+puma (5.6.6) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started OPTIONS "/login" for 127.0.0.1 at 2024-04-27 21:29:30 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mCACHE ActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 5 pending migrations:
+
+20240427214326_create_expenses.rb
+20240427214558_create_activities.rb
+20240427215327_create_participants.rb
+20240427215457_create_settlements.rb
+20240427234812_create_contributions.rb
+
+
+):
+  
+activerecord (7.0.8.1) lib/active_record/migration.rb:662:in `check_pending!'
+activerecord (7.0.8.1) lib/active_record/migration.rb:627:in `block (2 levels) in call'
+activesupport (7.0.8.1) lib/active_support/file_update_checker.rb:83:in `execute'
+activerecord (7.0.8.1) lib/active_record/migration.rb:632:in `block in call'
+activerecord (7.0.8.1) lib/active_record/migration.rb:624:in `synchronize'
+activerecord (7.0.8.1) lib/active_record/migration.rb:624:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.8.1) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/show_exceptions.rb:29:in `call'
+railties (7.0.8.1) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.8.1) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.8.1) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.8.1) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.8.1) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.8.1) lib/rails/rack/logger.rb:25:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.9) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.8.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.9) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/host_authorization.rb:138:in `call'
+railties (7.0.8.1) lib/rails/engine.rb:530:in `call'
+puma (5.6.6) lib/puma/configuration.rb:252:in `call'
+puma (5.6.6) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.6) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.6) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.6) lib/puma/server.rb:443:in `process_client'
+puma (5.6.6) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started POST "/login" for 127.0.0.1 at 2024-04-27 21:31:03 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mCACHE ActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 5 pending migrations:
+
+20240427214326_create_expenses.rb
+20240427214558_create_activities.rb
+20240427215327_create_participants.rb
+20240427215457_create_settlements.rb
+20240427234812_create_contributions.rb
+
+
+):
+  
+activerecord (7.0.8.1) lib/active_record/migration.rb:662:in `check_pending!'
+activerecord (7.0.8.1) lib/active_record/migration.rb:627:in `block (2 levels) in call'
+activesupport (7.0.8.1) lib/active_support/file_update_checker.rb:83:in `execute'
+activerecord (7.0.8.1) lib/active_record/migration.rb:632:in `block in call'
+activerecord (7.0.8.1) lib/active_record/migration.rb:624:in `synchronize'
+activerecord (7.0.8.1) lib/active_record/migration.rb:624:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.8.1) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/show_exceptions.rb:29:in `call'
+railties (7.0.8.1) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.8.1) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.8.1) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.8.1) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.8.1) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.8.1) lib/rails/rack/logger.rb:25:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.9) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.8.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.9) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.8.1) lib/action_dispatch/middleware/host_authorization.rb:138:in `call'
+rack-cors (2.0.2) lib/rack/cors.rb:102:in `call'
+railties (7.0.8.1) lib/rails/engine.rb:530:in `call'
+puma (5.6.6) lib/puma/configuration.rb:252:in `call'
+puma (5.6.6) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.6) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.6) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.6) lib/puma/server.rb:443:in `process_client'
+puma (5.6.6) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateExpenses (20240427214326)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE TABLE "expenses" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "description" varchar, "expense_amount" decimal, "paid_by" integer, "split_type" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20240427214326"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateActivities (20240427214558)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "activities" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_by" integer, "start_date" varchar, "end_date" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20240427214558"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateParticipants (20240427215327)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "participants" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "activity_id" integer, "user_id" integer, "paid_amount" decimal, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20240427215327"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateSettlements (20240427215457)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "settlements" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "from_user" integer, "to_user" integer, "activity_id" integer, "settlement_amount" decimal, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20240427215457"]]
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateContributions (20240427234812)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "contributions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "participant_id" varchar, "activity_id" varchar, "amount" decimal, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20240427234812"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/login" for 127.0.0.1 at 2024-04-27 21:32:32 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#login as HTML
+  Parameters: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session. Context: { controller: SessionsController, action: login, request: #<ActionDispatch::Request:0x00007f9c0ff416d8>, params: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "controller"=>"sessions", "action"=>"login", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}} }[0m
+[31mUnpermitted parameter: :session. Context: { controller: SessionsController, action: login, request: #<ActionDispatch::Request:0x00007f9c0ff416d8>, params: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "controller"=>"sessions", "action"=>"login", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username = NULL OR email = 'felixkim09@gmail.com') ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:17:in `find_user_by_username_or_email'
+[31mUnpermitted parameter: :session. Context: { controller: SessionsController, action: login, request: #<ActionDispatch::Request:0x00007f9c0ff416d8>, params: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "controller"=>"sessions", "action"=>"login", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}} }[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.22ms)
+Completed 200 OK in 238ms (Views: 8.1ms | ActiveRecord: 0.8ms | Allocations: 20966)
+
+
+Started POST "/login" for 127.0.0.1 at 2024-04-27 21:33:45 -0500
+Processing by SessionsController#login as HTML
+  Parameters: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session. Context: { controller: SessionsController, action: login, request: #<ActionDispatch::Request:0x00007f9c11438258>, params: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "controller"=>"sessions", "action"=>"login", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}} }[0m
+[31mUnpermitted parameter: :session. Context: { controller: SessionsController, action: login, request: #<ActionDispatch::Request:0x00007f9c11438258>, params: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "controller"=>"sessions", "action"=>"login", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username = NULL OR email = 'felixkim09@gmail.com') ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:17:in `find_user_by_username_or_email'
+[31mUnpermitted parameter: :session. Context: { controller: SessionsController, action: login, request: #<ActionDispatch::Request:0x00007f9c11438258>, params: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "controller"=>"sessions", "action"=>"login", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}} }[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 200 OK in 222ms (Views: 0.5ms | ActiveRecord: 0.2ms | Allocations: 1282)
+
+
+Started POST "/login" for 127.0.0.1 at 2024-04-27 21:36:18 -0500
+Processing by SessionsController#login as HTML
+  Parameters: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session. Context: { controller: SessionsController, action: login, request: #<ActionDispatch::Request:0x00007f9c1145ac18>, params: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "controller"=>"sessions", "action"=>"login", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}} }[0m
+[31mUnpermitted parameter: :session. Context: { controller: SessionsController, action: login, request: #<ActionDispatch::Request:0x00007f9c1145ac18>, params: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "controller"=>"sessions", "action"=>"login", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username = NULL OR email = 'felixkim09@gmail.com') ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:17:in `find_user_by_username_or_email'
+[31mUnpermitted parameter: :session. Context: { controller: SessionsController, action: login, request: #<ActionDispatch::Request:0x00007f9c1145ac18>, params: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "controller"=>"sessions", "action"=>"login", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}} }[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 200 OK in 227ms (Views: 0.6ms | ActiveRecord: 0.2ms | Allocations: 1279)
+
+
+Started POST "/login" for 127.0.0.1 at 2024-04-27 21:37:38 -0500
+Processing by SessionsController#login as HTML
+  Parameters: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session. Context: { controller: SessionsController, action: login, request: #<ActionDispatch::Request:0x00007f9c11483910>, params: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "controller"=>"sessions", "action"=>"login", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}} }[0m
+[31mUnpermitted parameter: :session. Context: { controller: SessionsController, action: login, request: #<ActionDispatch::Request:0x00007f9c11483910>, params: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "controller"=>"sessions", "action"=>"login", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username = NULL OR email = 'felixkim09@gmail.com') ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:17:in `find_user_by_username_or_email'
+[31mUnpermitted parameter: :session. Context: { controller: SessionsController, action: login, request: #<ActionDispatch::Request:0x00007f9c11483910>, params: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "controller"=>"sessions", "action"=>"login", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}} }[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 200 OK in 226ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 1271)
+
+
+Started GET "/owed/1" for 127.0.0.1 at 2024-04-27 23:18:35 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owed/1"):
+  
+Started GET "/owed/1" for 127.0.0.1 at 2024-04-27 23:18:36 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owed/1"):
+  
+Started GET "/owed/1" for 127.0.0.1 at 2024-04-27 23:18:55 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owed/1"):
+  
+Started GET "/owed/1" for 127.0.0.1 at 2024-04-27 23:18:55 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owed/1"):
+  
+Started GET "/owing/1" for 127.0.0.1 at 2024-04-27 23:45:25 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owing/1"):
+  
+Started GET "/owing/1" for 127.0.0.1 at 2024-04-27 23:45:25 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owing/1"):
+  
+Started GET "/owing/1" for 127.0.0.1 at 2024-04-27 23:47:10 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owing/1"):
+  
+Started GET "/owing/1" for 127.0.0.1 at 2024-04-27 23:47:11 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owing/1"):
+  
+Started POST "/login" for 127.0.0.1 at 2024-04-27 23:48:10 -0500
+Processing by SessionsController#login as HTML
+  Parameters: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session. Context: { controller: SessionsController, action: login, request: #<ActionDispatch::Request:0x00007f9c16d4a620>, params: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "controller"=>"sessions", "action"=>"login", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}} }[0m
+[31mUnpermitted parameter: :session. Context: { controller: SessionsController, action: login, request: #<ActionDispatch::Request:0x00007f9c16d4a620>, params: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "controller"=>"sessions", "action"=>"login", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username = NULL OR email = 'felixkim09@gmail.com') ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:17:in `find_user_by_username_or_email'
+[31mUnpermitted parameter: :session. Context: { controller: SessionsController, action: login, request: #<ActionDispatch::Request:0x00007f9c16d4a620>, params: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "controller"=>"sessions", "action"=>"login", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}} }[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.43ms)
+Completed 200 OK in 251ms (Views: 3.4ms | ActiveRecord: 2.3ms | Allocations: 1391)
+
+
+Started POST "/login" for 127.0.0.1 at 2024-04-28 02:27:03 -0500
+Processing by SessionsController#login as HTML
+  Parameters: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session. Context: { controller: SessionsController, action: login, request: #<ActionDispatch::Request:0x00007f9c115b0b80>, params: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "controller"=>"sessions", "action"=>"login", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}} }[0m
+[31mUnpermitted parameter: :session. Context: { controller: SessionsController, action: login, request: #<ActionDispatch::Request:0x00007f9c115b0b80>, params: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "controller"=>"sessions", "action"=>"login", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username = NULL OR email = 'felixkim09@gmail.com') ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:17:in `find_user_by_username_or_email'
+[31mUnpermitted parameter: :session. Context: { controller: SessionsController, action: login, request: #<ActionDispatch::Request:0x00007f9c115b0b80>, params: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "controller"=>"sessions", "action"=>"login", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}} }[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.48ms)
+Completed 200 OK in 356ms (Views: 7.8ms | ActiveRecord: 4.4ms | Allocations: 1379)
+
+
+Started POST "/login" for 127.0.0.1 at 2024-04-28 02:27:29 -0500
+Processing by SessionsController#login as HTML
+  Parameters: {"email"=>"Felixkim09@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"Felixkim09@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session. Context: { controller: SessionsController, action: login, request: #<ActionDispatch::Request:0x00007f9c115ba450>, params: {"email"=>"Felixkim09@gmail.com", "password"=>"[FILTERED]", "controller"=>"sessions", "action"=>"login", "session"=>{"email"=>"Felixkim09@gmail.com", "password"=>"[FILTERED]"}} }[0m
+[31mUnpermitted parameter: :session. Context: { controller: SessionsController, action: login, request: #<ActionDispatch::Request:0x00007f9c115ba450>, params: {"email"=>"Felixkim09@gmail.com", "password"=>"[FILTERED]", "controller"=>"sessions", "action"=>"login", "session"=>{"email"=>"Felixkim09@gmail.com", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username = NULL OR email = 'Felixkim09@gmail.com') ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:17:in `find_user_by_username_or_email'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.31ms)
+Completed 401 Unauthorized in 6ms (Views: 1.3ms | ActiveRecord: 0.3ms | Allocations: 1020)
+
+
+Started POST "/login" for 127.0.0.1 at 2024-04-28 02:28:11 -0500
+Processing by SessionsController#login as HTML
+  Parameters: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session. Context: { controller: SessionsController, action: login, request: #<ActionDispatch::Request:0x00007f9c16dc3098>, params: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "controller"=>"sessions", "action"=>"login", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}} }[0m
+[31mUnpermitted parameter: :session. Context: { controller: SessionsController, action: login, request: #<ActionDispatch::Request:0x00007f9c16dc3098>, params: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "controller"=>"sessions", "action"=>"login", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username = NULL OR email = 'felixkim09@gmail.com') ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:17:in `find_user_by_username_or_email'
+[31mUnpermitted parameter: :session. Context: { controller: SessionsController, action: login, request: #<ActionDispatch::Request:0x00007f9c16dc3098>, params: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "controller"=>"sessions", "action"=>"login", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}} }[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.72ms)
+Completed 200 OK in 290ms (Views: 1.3ms | ActiveRecord: 2.9ms | Allocations: 1265)
+
+
+Started POST "/login" for 127.0.0.1 at 2024-04-28 02:32:44 -0500
+Processing by SessionsController#login as HTML
+  Parameters: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session. Context: { controller: SessionsController, action: login, request: #<ActionDispatch::Request:0x00007f9c18027018>, params: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "controller"=>"sessions", "action"=>"login", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}} }[0m
+[31mUnpermitted parameter: :session. Context: { controller: SessionsController, action: login, request: #<ActionDispatch::Request:0x00007f9c18027018>, params: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "controller"=>"sessions", "action"=>"login", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username = NULL OR email = 'felixkim09@gmail.com') ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:17:in `find_user_by_username_or_email'
+[31mUnpermitted parameter: :session. Context: { controller: SessionsController, action: login, request: #<ActionDispatch::Request:0x00007f9c18027018>, params: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "controller"=>"sessions", "action"=>"login", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}} }[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (2.39ms)
+Completed 200 OK in 296ms (Views: 3.0ms | ActiveRecord: 1.3ms | Allocations: 1264)
+
+
+Started GET "/owed/1" for 127.0.0.1 at 2024-04-28 07:45:17 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owed/1"):
+  
+Started GET "/owed/1" for 127.0.0.1 at 2024-04-28 07:45:17 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owed/1"):
+  
+Started GET "/owed/1" for 127.0.0.1 at 2024-04-28 07:49:37 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owed/1"):
+  
+Started GET "/owed/1" for 127.0.0.1 at 2024-04-28 07:51:25 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owed/1"):
+  
+Started GET "/owed/1" for 127.0.0.1 at 2024-04-28 07:51:43 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owed/1"):
+  
+Started GET "/owed/1" for 127.0.0.1 at 2024-04-28 07:51:46 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owed/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:34:25 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:34:26 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:34:35 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:34:47 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:34:49 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:34:56 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:34:59 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:36:20 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:36:23 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:37:46 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:38:05 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:38:07 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:38:11 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:38:23 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:38:46 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:39:01 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:39:44 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:39:46 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:39:49 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:41:14 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:41:37 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:41:39 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:41:49 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:41:59 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:42:07 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:42:12 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:42:14 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:42:17 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:42:26 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:42:28 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:42:42 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:43:05 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:43:12 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:43:20 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:44:29 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:44:29 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:44:49 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:44:51 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:44:58 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:45:07 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:45:16 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:45:18 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:45:24 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:45:54 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:46:17 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:46:20 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:46:35 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:46:54 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:46:56 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:47:54 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:47:58 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:48:02 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:48:05 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:48:09 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:49:26 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 08:49:27 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/owing/1" for 127.0.0.1 at 2024-04-28 08:50:17 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owing/1"):
+  
+Started GET "/owing/1" for 127.0.0.1 at 2024-04-28 08:50:17 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owing/1"):
+  
+Started GET "/owing/1" for 127.0.0.1 at 2024-04-28 09:37:05 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owing/1"):
+  
+Started GET "/owing/1" for 127.0.0.1 at 2024-04-28 09:37:05 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owing/1"):
+  
+Started POST "/transaction/condition/0" for 127.0.0.1 at 2024-04-28 09:42:37 -0500
+  
+ActionController::RoutingError (No route matches [POST] "/transaction/condition/0"):
+  
+Started GET "/owing/1" for 127.0.0.1 at 2024-04-28 09:44:12 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owing/1"):
+  
+Started GET "/owing/1" for 127.0.0.1 at 2024-04-28 09:44:12 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owing/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 09:44:22 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 09:44:22 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/owed/1" for 127.0.0.1 at 2024-04-28 09:46:51 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owed/1"):
+  
+Started GET "/owed/1" for 127.0.0.1 at 2024-04-28 09:46:51 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owed/1"):
+  
+Started GET "/owed/1" for 127.0.0.1 at 2024-04-28 09:47:13 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owed/1"):
+  
+Started GET "/owed/1" for 127.0.0.1 at 2024-04-28 09:47:13 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owed/1"):
+  
+Started POST "/login" for 127.0.0.1 at 2024-04-28 09:52:01 -0500
+Processing by SessionsController#login as HTML
+  Parameters: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session. Context: { controller: SessionsController, action: login, request: #<ActionDispatch::Request:0x00007f9c1886d678>, params: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "controller"=>"sessions", "action"=>"login", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}} }[0m
+[31mUnpermitted parameter: :session. Context: { controller: SessionsController, action: login, request: #<ActionDispatch::Request:0x00007f9c1886d678>, params: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "controller"=>"sessions", "action"=>"login", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username = NULL OR email = 'felixkim09@gmail.com') ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:17:in `find_user_by_username_or_email'
+[31mUnpermitted parameter: :session. Context: { controller: SessionsController, action: login, request: #<ActionDispatch::Request:0x00007f9c1886d678>, params: {"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]", "controller"=>"sessions", "action"=>"login", "session"=>{"email"=>"felixkim09@gmail.com", "password"=>"[FILTERED]"}} }[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.91ms)
+Completed 200 OK in 328ms (Views: 12.3ms | ActiveRecord: 5.8ms | Allocations: 1378)
+
+
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 09:52:12 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 09:52:12 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/owing/1" for 127.0.0.1 at 2024-04-28 09:52:16 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owing/1"):
+  
+Started GET "/owing/1" for 127.0.0.1 at 2024-04-28 09:52:16 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owing/1"):
+  
+Started GET "/owing/1" for 127.0.0.1 at 2024-04-28 09:52:55 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owing/1"):
+  
+Started GET "/owing/1" for 127.0.0.1 at 2024-04-28 09:52:58 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owing/1"):
+  
+Started GET "/owing/1" for 127.0.0.1 at 2024-04-28 09:58:00 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owing/1"):
+  
+Started GET "/owing/1" for 127.0.0.1 at 2024-04-28 09:58:03 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owing/1"):
+  
+Started GET "/owing/1" for 127.0.0.1 at 2024-04-28 09:58:17 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owing/1"):
+  
+Started GET "/owed/1" for 127.0.0.1 at 2024-04-28 09:58:57 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owed/1"):
+  
+Started GET "/owed/1" for 127.0.0.1 at 2024-04-28 09:58:57 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owed/1"):
+  
+Started GET "/owed/1" for 127.0.0.1 at 2024-04-28 10:14:30 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owed/1"):
+  
+Started GET "/owed/1" for 127.0.0.1 at 2024-04-28 10:14:30 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owed/1"):
+  
+Started GET "/owed/1" for 127.0.0.1 at 2024-04-28 10:14:50 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owed/1"):
+  
+Started GET "/owed/1" for 127.0.0.1 at 2024-04-28 10:14:55 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owed/1"):
+  
+Started GET "/owed/1" for 127.0.0.1 at 2024-04-28 10:15:25 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owed/1"):
+  
+Started GET "/owed/1" for 127.0.0.1 at 2024-04-28 10:15:47 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owed/1"):
+  
+Started GET "/owed/1" for 127.0.0.1 at 2024-04-28 10:15:47 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owed/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 10:19:37 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/activity/active/1" for 127.0.0.1 at 2024-04-28 10:19:37 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/activity/active/1"):
+  
+Started GET "/owing/1" for 127.0.0.1 at 2024-04-28 10:19:39 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owing/1"):
+  
+Started GET "/owing/1" for 127.0.0.1 at 2024-04-28 10:19:39 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owing/1"):
+  
+Started GET "/owed/1" for 127.0.0.1 at 2024-04-28 10:19:43 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owed/1"):
+  
+Started GET "/owed/1" for 127.0.0.1 at 2024-04-28 10:19:43 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/owed/1"):
+  

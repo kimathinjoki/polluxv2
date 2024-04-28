@@ -3,11 +3,11 @@ import axios from "axios";
 import { TbSquareArrowUp } from 'react-icons/tb';
 
 function Activities() {
-	const tableHeads = ['Name', 'Type', 'Date', 'Amount', 'Participants'];
+	const tableHeads = ['Name', 'Type', 'Date', 'Amount', 'Participants', 'Expenses'];
 
 	const [showModal, setShowModal] = useState(false);
 
-	const [transId, setTransId ] = useState(0)
+	const [actvId, setActvId ] = useState(0)
 	const [activities, setActivities] = useState([])
 	const [client, setClient] = useState("")
 
@@ -41,7 +41,7 @@ function Activities() {
 		  })
 		  .then((response)=>{
 			console.log(response.data)
-			setOwing(...owing, response.data.transactions)
+			setActivities(...activities, response.data.activities)
 		  })
 		  .catch((err)=>{
 			console.log(err)
@@ -49,84 +49,23 @@ function Activities() {
 
 	},[])
 
-
-
-	function completeTransaction(){
-		axios.post(`http://127.0.0.1:3001/transaction/condition/${transId}`,{
-			"condition": 1
-		},{
-			headers:{
-				"Authorization": `Bearer ${token}`
-			  }
-		})
-		.then((response)=>{
-			const receiver = response.data.receiver_id
-			const payer = response.data.payer_id
-			const amount = response.data.amount
-			// amending payer balance
-			axios.post(`http://127.0.0.1:3001/accounts/minus/${payer}`,{
-				"balance": Number(amount)
-			},{
-				headers:{
-					"Authorization": `Bearer ${token}`
-				  }
-			}).then((response)=>{
-				console.log(response)
-			})
-			.catch((err)=>{
-				console.log(err)
-			})
-
-			// amending receiver balance
-
-			axios.post(`http://127.0.0.1:3001/accounts/add/${receiver}`,{
-				"balance": Number(amount)
-			},{
-				headers:{
-					"Authorization": `Bearer ${token}`
-				  }
-			}).then((response)=>{
-				console.log(response)
-			})
-			.catch((err)=>{
-				console.log(err)
-			})
-
-			
-
-		})
-
-	}
-
-	function setDispute(){
-		axios.post(`http://127.0.0.1:3001/transaction/condition/${transId}`,{
-			"condition": 2
-		},{
-			headers:{
-				"Authorization": `Bearer ${token}`
-			  }
-		})
-	
-
-	}
-
 	function removeFromList(id){
-		setOwing((t)=>t.filter((b)=>b.id !== id))
+		setActivities((t)=>t.filter((b)=>b.id !== id))
 	}
 
-	function getClient(id){
-		let client
-		axios.get(`http://127.0.0.1:3001/users/${id}`)
+	function getParticipants(id){
+		let participants
+		axios.get(`http://127.0.0.1:3001/activities/user/${id}`)
 				.then((response)=>{
-				client = response.data.username
+				participants = response.data.username
 				})
 				.catch((err)=>{
 					console.log(err)
 				})
-		return client
+		return participants
 	}
 
-			return(
+		return(
 				<>
 
 			{/* the badge */}
@@ -134,7 +73,7 @@ function Activities() {
 			<div className="flex items-center justify-center">
 				<span className="inline-flex mt-20 rounded-full bg-orange-300 px-4 py-3.5 text-black">
 					<TbSquareArrowUp className="self-center text-3xl" />
-					<p className="whitespace-nowrap text-3xl">You owe</p>
+					<p className="whitespace-nowrap text-3xl">Past Activities</p>
 				</span>
 			</div>
 
@@ -161,13 +100,10 @@ function Activities() {
 							</tr>
 						</thead>
 						<tbody>
-						{owing?.map((transaction)=>{
+						{activities?.map((transaction)=>{
 							return <tr className="border-b border-opacity-20  dark:border-gray-100 dark:bg-gray-200">
 								<td className="p-3">
 									<p>{transaction.id * 48673}</p>
-								</td>
-								<td className="p-3">
-									<p>{getClient(transaction.receiver_id)}</p>
 								</td>
 								<td className="p-3">
 									<p>{transaction.created_at}</p>
@@ -187,7 +123,7 @@ function Activities() {
 										data-modal-toggle="defaultModal"
 										className=" cursor-pointer px-3 py-1 font-semibold rounded-md dark:bg-orange-400 dark:text-gray-900"
 										onClick={()=>{
-											setTransId(transaction.id)
+											setActvId(activities.id)
 											openModal()
 										}}
 									>
@@ -196,6 +132,51 @@ function Activities() {
 								</td>
 							</tr>
 							})}
+
+<tr className="border-b border-opacity-20  dark:border-gray-100 dark:bg-gray-200">
+								<td className="p-3">
+									<p>Hawai Trip</p>
+								</td>
+								<td className="p-3">
+									<p>Vacation</p>
+									{/* <p className="dark:text-gray-400">Friday</p> */}
+								</td>
+								<td className="p-3">
+									<p>01/02/2024</p>
+									{/* <p className="dark:text-gray-400">Tuesday</p> */}
+								</td>
+								<td className="p-3 text-right">
+									<p>$ 2000</p>
+								</td>
+								<td className="p-3 text-right">
+									<button
+										type="button"
+										data-modal-target="#defaultModal"
+										data-modal-toggle="defaultModal"
+										className=" cursor-pointer px-3 py-1 font-semibold rounded-md dark:bg-orange-400 dark:text-gray-900"
+										onClick={()=>{
+											setActvId(activities.id)
+											openModal()
+										}}
+									>
+										<span>View</span>
+									</button>
+								</td>
+                                <td className="p-3 text-right">
+									<button
+										type="button"
+										data-modal-target="#defaultModal"
+										data-modal-toggle="defaultModal"
+										className=" cursor-pointer px-3 py-1 font-semibold rounded-md dark:bg-orange-400 dark:text-gray-900"
+										onClick={()=>{
+											setActvId(activities.id)
+											openModal()
+										}}
+									>
+										<span>View</span>
+									</button>
+								</td>
+							</tr>
 
 							
 						</tbody>
@@ -213,17 +194,17 @@ function Activities() {
 
 							<div className="flex flex-col justify-center gap-3 mt-6 sm:flex-row">
 								<button className="px-6 py-2 rounded-sm shadow-sm dark:bg-green-600 dark:text-gray-900" onClick={()=>{
-									completeTransaction()
-									removeFromList(transId)
+	
+									removeFromList(actvId)
 									closeModal()
 									}}>
-									Complete
+									
 								</button>
 								<button
 									className="px-6 py-2 rounded-sm shadow-sm dark:bg-red-600 dark:text-gray-900"
 									onClick={()=>{
-										setDispute()
-										removeFromList(transId)
+				
+										removeFromList(actvId)
 										closeModal()
 									}
 								}

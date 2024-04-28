@@ -265,17 +265,6 @@ function Main() {
 											className="mt-2 flex flex-col px-4"
 										>
 
-                                            <Link
-												to="/main/owed"
-												className="flex items-center gap-2 rounded-lg px-4 py-2 text-white-600 hover:text-white-800"
-											>
-												<i>
-													<BsFileArrowDown />
-												</i>
-
-												<span className="text-sm font-medium"> activities </span>
-											</Link>
-
 											<Link
 												to="/main/owed"
 												className="flex items-center gap-2 rounded-lg px-4 py-2 text-white-600 hover:text-white-800"
