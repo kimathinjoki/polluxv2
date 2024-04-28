@@ -11,7 +11,8 @@ function Owing() {
 	const [transId, setTransId ] = useState(0)
 	const [owing, setOwing] = useState([])
 	const [client, setClient] = useState("")
-    // const [settle, setSettle] = useState[false]
+    const [settle, setSettle] = useState(false)
+    const [expenses, setExpenses] = useState(false)
 
 	// const [receiver_id, setReceiver_id] = useState(0)
 	// const [payer_id, setPayer_id] =useState(0)
@@ -80,9 +81,13 @@ function Owing() {
 		return client
 	}
 
-    // if(settle){
-    //     return <Navigate to='/main/settle'/>
-    // }
+    if (expenses){
+        return <Navigate to='/main/expenses'/>
+    }
+
+    if (settle){
+        return <Navigate to='/main/settle'/>
+    }
 
 			return(
 				<>
@@ -173,7 +178,7 @@ function Owing() {
 										className=" cursor-pointer px-3 py-1 font-semibold rounded-md dark:bg-orange-400 dark:text-gray-900"
 										onClick={()=>{
 											setTransId(transId);
-											openModal()
+											setExpenses(true)
 										}}
 									>
 										<span>View</span>
@@ -212,7 +217,7 @@ function Owing() {
 
 							<div className="flex flex-col justify-center gap-3 mt-6 sm:flex-row">
 								<button className="px-6 py-2 rounded-sm shadow-sm dark:bg-green-600 dark:text-gray-900" onClick={()=>{
-                                    // setSettle(true)
+                                    setSettle(true)
 									removeFromList(transId)
 									closeModal()
 									}}>

@@ -145,10 +145,10 @@ function AddActivity()
                   </div>
                   <div className="flex-1 py-5 pl-1 overflow-hidden">
                     <ul>
-                      <li className="text-xs text-gray-600 uppercase">Participants</li>
-                      <li>Rick Astley</li>
-                      <li>Rickrolled 11</li>
-                      <li>1000 Vienna</li>
+                      <li className="text-xs text-black-600 uppercase">Participants</li>
+                      <li className="text-black-600 ">Rick Astley</li>
+                      <li className="text-black-600 ">Brian L.</li>
+                      <li className="text-black-600 ">Vienna D.</li>
                     </ul>
                   </div>
                   <div className="flex-none pt-2.5 pr-2.5 pl-1">

@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { TbSquareArrowDown } from 'react-icons/tb';
 import axios from "axios";
+import { Navigate } from 'react-router-dom';
 
 function Owed() {
 	const tableHeads = ['Activity', 'Name', 'Date', 'Amount', 'Request', 'Expenses'];
@@ -16,6 +17,8 @@ function Owed() {
 
 	// transaction id
 	const [transId, setTransId ] = useState(0)
+
+    const [expenses, setExpenses] = useState(false)
 
 
 
@@ -61,6 +64,10 @@ function Owed() {
 				})
 		return client
 	}
+
+    if (expenses){
+        return <Navigate to='/main/expenses'/>
+    }
 
 
 	return (
@@ -129,8 +136,7 @@ function Owed() {
 									type="button"
 									className="px-3 py-1 font-semibold rounded-md dark:bg-violet-400 dark:text-gray-900"
 									onClick={()=>{
-										// setTransId(transaction.id)
-										openModal()
+										setExpenses(true)
 									}}
 									>
 										<span>View</span>
@@ -172,6 +178,7 @@ function Owed() {
 									onClick={()=>{
 										// setTransId(transaction.id)
 										// openModal()
+                                        setExpenses(true)
 									}}
 									>
 										<span>View</span>
