@@ -28,7 +28,7 @@ function Landingpage(){
         Pollux
       </h1>
       <p className="mt-6 mb-8 text-lg sm:mb-12 xl:max-w-3xl dark:text-gray-900">
-        Split your expense with no stress.
+        Split your expenses with no stress.
       </p>
       <div className="flex flex-wrap justify-center">
         <button
